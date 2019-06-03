@@ -41,6 +41,7 @@
   "dependencies": {
     "electron-is-dev": "^1.1.0",
     "ewc": "^0.0.1",
-    "ewc-color": "^0.1.0"
+    "ewc-color": "^0.1.0",
+    "serialize-error": "^4.1.0"
   }
 }
