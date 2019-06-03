@@ -1,0 +1,43 @@
+{
+  "name": "yeet-mods",
+  "version": "0.1.0",
+  "description": "Yeets mods.",
+  "main": "build/electron.js",
+  "repository": "git@github.com:lolPants/yeet-mods.git",
+  "author": "Jack Baron <jackmbaron@gmail.com> (https://www.jackbaron.com)",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "electron": "electron .",
+    "dev": "yarn run electron --debug",
+    "clean": "rimraf dist build .cache",
+    "watch:client": "parcel --out-dir build ./client/index.html",
+    "watch:electron": "tsc --watch --sourceMap",
+    "watch": "npm-run-all --parallel watch:*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@types/node": "^12.0.4",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "babel-plugin-styled-components": "^1.10.0",
+    "electron": "^5.0.2",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.17.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "styled-components": "^4.2.1",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "electron-is-dev": "^1.1.0"
+  }
+}

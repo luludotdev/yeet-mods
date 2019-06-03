@@ -29,13 +29,5 @@ yarn-error.log*
 .release/
 dist/
 
-# Typed CSS Modules
-*.css.d.ts
-
-# Compiled Electron Code
-public/electron.js
-public/electron.js.map
-public/src/
-
-# Compiled Version Info
-src/version.ts
+# Parcel Cache
+.cache
