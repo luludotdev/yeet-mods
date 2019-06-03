@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { Button } from './Button'
+import { QuitButton } from './Quit'
 
 const Container = styled.div`
   display: flex;
@@ -14,5 +15,8 @@ const Container = styled.div`
   -webkit-user-select: none;
 `
 
-export const App: FunctionComponent = () => <Container />
-
+export const App: FunctionComponent = () => (
+  <Container>
+    <QuitButton />
+  </Container>
+)
