@@ -38,6 +38,8 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
-    "electron-is-dev": "^1.1.0"
+    "electron-is-dev": "^1.1.0",
+    "ewc": "^0.0.1",
+    "ewc-color": "^0.1.0"
   }
 }

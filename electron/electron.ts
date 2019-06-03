@@ -1,5 +1,7 @@
 import { app, BrowserWindow, Menu } from 'electron'
 import isDev from 'electron-is-dev'
+import { setBlurBehind } from 'ewc'
+import { convert } from 'ewc-color'
 import { join } from 'path'
 
 const instanceLock = app.requestSingleInstanceLock()
@@ -8,22 +10,23 @@ if (!instanceLock) app.quit()
 let window: BrowserWindow
 app.on('ready', () => {
   window = new BrowserWindow({
-    height: 870,
-    width: 1500,
+    height: 600,
+    width: 600,
 
-    minHeight: 520,
-    minWidth: 750,
-
-    // backgroundColor: '#00000000',
+    backgroundColor: '#00000000',
     frame: false,
+    maximizable: false,
+    resizable: false,
     show: false,
-    // transparent: true,
+    transparent: true,
 
     webPreferences: {
-      experimentalFeatures: true,
       nodeIntegration: true,
     },
   })
+
+  const bg = convert('#c3a6ff')
+  setBlurBehind(window, bg)
 
   const menu = !isDev
     ? null
