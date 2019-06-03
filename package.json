@@ -20,6 +20,7 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.0.4",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
@@ -43,6 +44,7 @@
     "electron-is-dev": "^1.1.0",
     "ewc": "^0.0.1",
     "ewc-color": "^0.1.0",
+    "mkdirp": "^0.5.1",
     "serialize-error": "^4.1.0",
     "winreg": "^1.2.4"
   }
