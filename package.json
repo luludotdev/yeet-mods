@@ -92,7 +92,7 @@
       "target": [
         "nsis"
       ],
-      "icon": "build/icons/icon.png",
+      "icon": "assets/icon.png",
       "publish": [
         {
           "provider": "github",
