@@ -31,7 +31,7 @@ app.on('ready', () => {
     },
   })
 
-  const bg = convert('#c3a6ff')
+  const bg = convert('#c3a6ff10')
   setBlurBehind(window, bg)
 
   const menu = !isDev
