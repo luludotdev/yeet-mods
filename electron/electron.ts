@@ -9,7 +9,6 @@ import './src/yeet'
 
 const instanceLock = app.requestSingleInstanceLock()
 if (!instanceLock) app.quit()
-autoUpdater.autoDownload = false
 
 let window: BrowserWindow
 app.on('ready', () => {
