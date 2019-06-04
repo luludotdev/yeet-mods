@@ -45,7 +45,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-konami-code": "^1.4.0",
-    "rimraf": "^2.6.3",
     "styled-components": "^4.2.1",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
@@ -58,6 +57,7 @@
     "ewc-color": "^0.1.0",
     "execa": "^1.0.0",
     "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.3",
     "serialize-error": "^4.1.0",
     "winreg": "^1.2.4"
   }
