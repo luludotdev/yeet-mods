@@ -4,6 +4,8 @@ import { setBlurBehind } from 'ewc'
 import { convert } from 'ewc-color'
 import { join } from 'path'
 
+import './src/yeet'
+
 const instanceLock = app.requestSingleInstanceLock()
 if (!instanceLock) app.quit()
 

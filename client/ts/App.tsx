@@ -3,6 +3,7 @@ import Konami from 'react-konami-code'
 import styled from 'styled-components'
 import { Button } from './Button'
 import { QuitButton } from './Quit'
+import { callMain } from './utils/betterIPC'
 
 const Container = styled.div`
   display: flex;
@@ -19,10 +20,21 @@ const Container = styled.div`
 export const App: FunctionComponent = () => {
   const [megaYeet, setMegaYeet] = useState(false)
 
+  const handleYeet = async () => {
+    try {
+      await callMain<void, boolean>('yeet-mods', megaYeet)
+    } catch (err) {
+      // lmao
+    }
+  }
+
   return (
     <Container>
       <QuitButton />
-      <Button label={megaYeet ? 'MEGA YEET' : 'YEET MODS'} />
+      <Button
+        label={megaYeet ? 'MEGA YEET' : 'YEET MODS'}
+        onClick={() => handleYeet()}
+      />
 
       <Konami action={() => setMegaYeet(!megaYeet)} timeout={10} />
     </Container>
