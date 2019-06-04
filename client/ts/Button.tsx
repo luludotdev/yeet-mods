@@ -43,12 +43,16 @@ const ButtonComponent = styled.button`
 `
 
 const Label = styled.span`
-  font-size: 3em;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 7.5em;
+  line-height: 1em;
+  font-weight: 900;
+  font-style: italic;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   text-transform: uppercase;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3), 2px 2px 0 rgba(0, 0, 0, 0.3),
+    2px 2px 2px rgba(0, 0, 0, 0.4);
 `
 
 interface IProps {
