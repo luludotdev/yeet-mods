@@ -3,6 +3,14 @@ import { join } from 'path'
 import { exists, remove, rmDir } from './fs'
 import { answerRenderer } from './ipc/betterIPC'
 import { resolveInstallInfo } from './path/resolve'
+import { regKey } from './registry'
+
+import {
+  STEAM_APP_ID,
+  STEAM_EXE,
+  STEAM_REG_KEY,
+  STEAM_REG_VAL,
+} from './path/constants'
 
 answerRenderer<void, YeetType>('yeet-mods', async type => {
   const installInfo = await resolveInstallInfo()
@@ -45,5 +53,15 @@ const megaYeet = async (path: string) => {
 }
 
 const gigaYeet = async (path: string) => {
-  console.log('giga', path)
+  const steamPath = await regKey(STEAM_REG_KEY, STEAM_REG_VAL)
+  if (steamPath === undefined) return
+
+  const steamExe = join(steamPath, STEAM_EXE)
+  await rmDir(join(path, '*'))
+
+  try {
+    await execa(steamExe, [`steam://validate/${STEAM_APP_ID}`])
+  } catch (err) {
+    // lmao
+  }
 }
