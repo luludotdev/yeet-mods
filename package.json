@@ -16,13 +16,19 @@
     "lint:electron": "tslint -c tslint.json 'electron/**/*.ts'",
     "lint": "npm-run-all lint:*",
     "test": "npm run lint",
-    "build:client": "parcel build --out-dir build ./client/index.html",
+    "build:client": "parcel build --public-url . --out-dir build ./client/index.html",
     "build:electron": "tsc",
     "build": "npm-run-all build:client build:electron",
     "prebuild": "npm-run-all lint clean",
     "watch:client": "parcel --out-dir build ./client/index.html",
     "watch:electron": "yarn run build:electron --watch --sourceMap",
-    "watch": "npm-run-all --parallel watch:*"
+    "watch": "npm-run-all --parallel watch:*",
+    "pack:shallow": "electron-builder --dir",
+    "compile:shallow": "electron-builder --win",
+    "ship:shallow": "electron-builder --win -p always",
+    "pack": "npm-run-all build pack:shallow",
+    "compile": "npm-run-all build compile:shallow",
+    "ship": "npm-run-all build ship:shallow"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -39,6 +45,7 @@
     "@types/winreg": "^1.2.30",
     "babel-plugin-styled-components": "^1.10.0",
     "electron": "^5.0.2",
+    "electron-builder": "^20.41.0",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.17.1",
@@ -60,5 +67,37 @@
     "rimraf": "^2.6.3",
     "serialize-error": "^4.1.0",
     "winreg": "^1.2.4"
+  },
+  "build": {
+    "appId": "com.jackbaron.yeet-mods",
+    "productName": "YeetMods",
+    "copyright": "Copyright © 2019 ${author}",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "extraMetadata": {
+      "main": "build/electron.js"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icons/icon.png",
+      "publish": [
+        {
+          "provider": "github",
+          "releaseType": "draft"
+        }
+      ]
+    }
   }
 }
