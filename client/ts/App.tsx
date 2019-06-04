@@ -1,3 +1,4 @@
+import Mousetrap from 'mousetrap'
 import React, { FunctionComponent, useState } from 'react'
 import Konami from 'react-konami-code'
 import styled, { createGlobalStyle } from 'styled-components'
@@ -24,12 +25,18 @@ const Container = styled.div`
   -webkit-user-select: none;
 `
 
+type YeetType = 'classic' | 'mega' | 'giga'
+
 export const App: FunctionComponent = () => {
   const [megaYeet, setMegaYeet] = useState(false)
+  const [gigaYeet, setGigaYeet] = useState(false)
+
+  Mousetrap.bind('y e e t', () => setGigaYeet(!gigaYeet))
 
   const handleYeet = async () => {
     try {
-      await callMain<void, boolean>('yeet-mods', megaYeet)
+      const type: YeetType = gigaYeet ? 'giga' : megaYeet ? 'mega' : 'classic'
+      await callMain<void, YeetType>('yeet-mods', type)
     } catch (err) {
       // lmao
     }
@@ -41,7 +48,7 @@ export const App: FunctionComponent = () => {
 
       <QuitButton />
       <Button
-        label={megaYeet ? 'MEGA YEET' : 'YEET MODS'}
+        label={gigaYeet ? 'GIGA YEET' : megaYeet ? 'MEGA YEET' : 'YEET MODS'}
         onClick={() => handleYeet()}
       />
 
