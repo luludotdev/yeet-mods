@@ -10,6 +10,8 @@ import './src/yeet'
 const instanceLock = app.requestSingleInstanceLock()
 if (!instanceLock) app.quit()
 
+app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
+
 let window: BrowserWindow
 app.on('ready', () => {
   if (!isDev) autoUpdater.checkForUpdates()
