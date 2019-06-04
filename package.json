@@ -11,8 +11,17 @@
     "electron": "electron .",
     "dev": "yarn run electron --debug",
     "clean": "rimraf dist build .cache",
+    "lint:client": "tslint -c tslint.json client/**/*.{ts,tsx}",
+    "lint:types": "yarn run build:electron --noEmit",
+    "lint:electron": "tslint -c tslint.json 'electron/**/*.ts'",
+    "lint": "npm-run-all lint:*",
+    "test": "npm run lint",
+    "build:client": "parcel build --out-dir build ./client/index.html",
+    "build:electron": "tsc",
+    "build": "npm-run-all build:client build:electron",
+    "prebuild": "npm-run-all lint clean",
     "watch:client": "parcel --out-dir build ./client/index.html",
-    "watch:electron": "tsc --watch --sourceMap",
+    "watch:electron": "yarn run build:electron --watch --sourceMap",
     "watch": "npm-run-all --parallel watch:*"
   },
   "devDependencies": {
