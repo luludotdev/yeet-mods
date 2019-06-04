@@ -1,9 +1,16 @@
 import React, { FunctionComponent, useState } from 'react'
 import Konami from 'react-konami-code'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { Button } from './Button'
 import { QuitButton } from './Quit'
 import { callMain } from './utils/betterIPC'
+
+const GlobalStyles = createGlobalStyle`
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+`
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +37,8 @@ export const App: FunctionComponent = () => {
 
   return (
     <Container>
+      <GlobalStyles />
+
       <QuitButton />
       <Button
         label={megaYeet ? 'MEGA YEET' : 'YEET MODS'}
