@@ -1,2 +1,2 @@
-import { remote, shell, clipboard, ipcRenderer, app, dialog } from 'electron'
-export { remote, shell, clipboard, ipcRenderer, app, dialog }
+import { app, clipboard, dialog, ipcRenderer, remote, shell } from 'electron'
+export { app, clipboard, dialog, ipcRenderer, remote, shell }
