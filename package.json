@@ -24,6 +24,7 @@
     "@types/node": "^12.0.4",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "@types/rimraf": "^2.0.2",
     "@types/styled-components": "^4.1.15",
     "@types/winreg": "^1.2.30",
     "babel-plugin-styled-components": "^1.10.0",

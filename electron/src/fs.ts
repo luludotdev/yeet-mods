@@ -1,6 +1,7 @@
 import { createHash } from 'crypto'
 import fs, { PathLike } from 'fs'
 import mkdirp from 'mkdirp'
+import rimraf from 'rimraf'
 import { promisify } from 'util'
 
 export const exists = async (path: PathLike) => {
@@ -32,5 +33,6 @@ export const ensureDir = promisify(mkdirp)
 export const readDir = promisify(fs.readdir)
 export const readFile = promisify(fs.readFile)
 export const remove = promisify(fs.unlink)
+export const rmDir = promisify(rimraf)
 export const rename = promisify(fs.rename)
 export const writeFile = promisify(fs.writeFile)
