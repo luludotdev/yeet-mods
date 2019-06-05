@@ -59,17 +59,30 @@ interface IProps {
   label: string
 
   onClick?: () => any
+  onMouseDown?: () => any
 }
 
-export const Button: FunctionComponent<IProps> = ({ label, onClick }) => {
+export const Button: FunctionComponent<IProps> = ({
+  label,
+  onClick,
+  onMouseDown,
+}) => {
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (!onClick || typeof onClick !== 'function') return
     else onClick()
   }
 
+  const handleMouseDown = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!onMouseDown || typeof onMouseDown !== 'function') return
+    else onMouseDown()
+  }
+
   return (
     <Container>
-      <ButtonComponent onClick={e => handleClick(e)}>
+      <ButtonComponent
+        onClick={e => handleClick(e)}
+        onMouseDown={e => handleMouseDown(e)}
+      >
         <Label>{label}</Label>
       </ButtonComponent>
     </Container>
