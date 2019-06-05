@@ -4,6 +4,7 @@ import Konami from 'react-konami-code'
 import styled, { createGlobalStyle } from 'styled-components'
 import { Button } from './Button'
 import { QuitButton } from './Quit'
+import { playClunk } from './sound'
 import { callMain } from './utils/betterIPC'
 
 const GlobalStyles = createGlobalStyle`
@@ -50,6 +51,7 @@ export const App: FunctionComponent = () => {
       <Button
         label={gigaYeet ? 'GIGA YEET' : megaYeet ? 'MEGA YEET' : 'YEET MODS'}
         onClick={() => handleYeet()}
+        onMouseDown={() => playClunk()}
       />
 
       <Konami action={() => setMegaYeet(!megaYeet)} timeout={10} />
