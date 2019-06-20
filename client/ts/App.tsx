@@ -1,8 +1,7 @@
-import Mousetrap from 'mousetrap'
 import React, { FunctionComponent, useState } from 'react'
-import Konami from 'react-konami-code'
 import styled, { createGlobalStyle } from 'styled-components'
 import { Button } from './Button'
+import { ModeSwitch } from './ModeSwitch'
 import { QuitButton } from './Quit'
 import { playClunk } from './sound'
 import { callMain } from './utils/betterIPC'
@@ -16,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -26,17 +26,18 @@ const Container = styled.div`
   -webkit-user-select: none;
 `
 
+const Buttons = styled.div`
+  margin-top: 48px;
+  display: flex;
+`
+
 type YeetType = 'classic' | 'mega' | 'giga'
 
 export const App: FunctionComponent = () => {
-  const [megaYeet, setMegaYeet] = useState(false)
-  const [gigaYeet, setGigaYeet] = useState(false)
-
-  Mousetrap.bind('y e e t', () => setGigaYeet(!gigaYeet))
+  const [type, setType] = useState('classic' as YeetType)
 
   const handleYeet = async () => {
     try {
-      const type: YeetType = gigaYeet ? 'giga' : megaYeet ? 'mega' : 'classic'
       await callMain<void, YeetType>('yeet-mods', type)
     } catch (err) {
       // lmao
@@ -49,12 +50,22 @@ export const App: FunctionComponent = () => {
 
       <QuitButton />
       <Button
-        label={gigaYeet ? 'GIGA YEET' : megaYeet ? 'MEGA YEET' : 'YEET MODS'}
+        label={
+          type === 'giga'
+            ? 'GIGA YEET'
+            : type === 'mega'
+            ? 'MEGA YEET'
+            : 'YEET MODS'
+        }
         onClick={() => handleYeet()}
         onMouseDown={() => playClunk()}
       />
 
-      <Konami action={() => setMegaYeet(!megaYeet)} timeout={10} />
+      <Buttons>
+        <ModeSwitch onClick={() => setType('classic')}>Yeet</ModeSwitch>
+        <ModeSwitch onClick={() => setType('mega')}>Mega</ModeSwitch>
+        <ModeSwitch onClick={() => setType('giga')}>Giga</ModeSwitch>
+      </Buttons>
     </Container>
   )
 }

@@ -17,7 +17,7 @@ app.on('ready', () => {
   if (!isDev) autoUpdater.checkForUpdates()
 
   window = new BrowserWindow({
-    height: 600,
+    height: 650,
     width: 600,
 
     backgroundColor: '#00000000',
