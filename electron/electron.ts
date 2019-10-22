@@ -35,21 +35,6 @@ app.on('ready', () => {
   const bg = convert('#c3a6ff10')
   setBlurBehind(window, bg)
 
-  const menu = !isDev
-    ? null
-    : Menu.buildFromTemplate([
-        {
-          label: 'Dev',
-          submenu: [
-            { role: 'reload' },
-            { role: 'forcereload' },
-            { role: 'toggledevtools' },
-          ],
-        },
-      ])
-
-  window.setMenu(menu)
-
   window.setTitle('YeetMods')
   const startURL = isDev
     ? 'http://localhost:1234'
@@ -65,7 +50,7 @@ autoUpdater.on('download-progress', ({ percent }) => {
 })
 
 autoUpdater.on('update-downloaded', async () => {
-  const button = dialog.showMessageBox(window, {
+  const { response } = await dialog.showMessageBox(window, {
     buttons: ['Release Notes', 'OK'],
     message:
       'A newer version has been downloaded.\n\nClick OK to install the update.' +
@@ -74,7 +59,7 @@ autoUpdater.on('update-downloaded', async () => {
     type: 'info',
   })
 
-  if (button === 0) {
+  if (response === 0) {
     const {
       provider: {
         // @ts-ignore
