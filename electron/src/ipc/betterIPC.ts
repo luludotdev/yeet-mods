@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain as ipc, WebContents } from 'electron'
-import serializeError from 'serialize-error'
+import { serializeError } from 'serialize-error'
 
 const getResponseChannels = (channel: string) => ({
   dataChannel: `%better-ipc-response-data-channel-${channel}`,

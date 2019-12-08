@@ -1,4 +1,4 @@
-import serializeError from 'serialize-error'
+import { serializeError } from 'serialize-error'
 import { ipcRenderer as ipc, remote } from './electron'
 
 const getResponseChannels = (channel: string) => ({
